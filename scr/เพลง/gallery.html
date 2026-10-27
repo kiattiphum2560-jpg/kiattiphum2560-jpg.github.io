@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | 💜My girlfriend💜</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="falling-hearts" aria-hidden="true">
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+    </div>
+    <header class="site-header">
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="memories.html">Memories</a>
+            <a href="gallery.html" aria-current="page">Gallery</a>
+            <a href="message.html">Message</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Our Gallery<span class="bouncing-heart" aria-hidden="true">💖</span></h1>
+        <p>Favorite photos, all in one place.</p>
+        <section class="gallery-upload" aria-labelledby="gallery-upload-title">
+            <h2 id="gallery-upload-title">Add your photos</h2>
+            <p>Choose photos from your device. They will be saved in this browser.</p>
+            <label class="gallery-upload-label" for="gallery-photo-input">Add photos</label>
+            <input class="gallery-upload-input" id="gallery-photo-input" type="file" accept="image/*" multiple>
+            <p class="gallery-upload-status" id="gallery-upload-status" role="status" aria-live="polite"></p>
+        </section>
+        <p class="gallery-photo-count" id="gallery-photo-count" aria-live="polite">Loading photos...</p>
+        <section class="pinterest-gallery" id="pinterest-gallery" aria-label="Photo gallery"></section>
+    </main>
+    <script src="carousel.js"></script>
+    <script src="gallery.js"></script>
+    <script src="trip-memories.js"></script>
+    <script src="relationship-counter.js"></script>
+    <script src="music-player.js"></script>
+    <script src="site-navigation.js"></script>
+</body>
+</html>

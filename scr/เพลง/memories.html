@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memories | 💜My girlfriend💜</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="falling-hearts" aria-hidden="true">
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+    </div>
+    <header class="site-header">
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="memories.html" aria-current="page">Memories</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="message.html">Message</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Our Memories<span class="bouncing-heart" aria-hidden="true">💖</span></h1>
+        <p>A little place for the moments we want to remember.</p>
+        <details class="trip-gift-editor" aria-labelledby="trip-editor-title">
+            <summary class="trip-gift-toggle" id="trip-editor-title">
+                <span class="trip-gift-icon" aria-hidden="true">🎁</span>
+                <span>Add a trip memory</span>
+                <span class="trip-gift-hint">Click to open</span>
+            </summary>
+            <section class="trip-editor" aria-label="New trip memory">
+                <form id="trip-form" class="trip-form">
+                    <label class="trip-field">
+                        Trip name
+                        <input id="trip-name" name="name" type="text" maxlength="100" placeholder="e.g. Our weekend in Chiang Mai" required>
+                    </label>
+                    <label class="trip-field">
+                        Trip photo
+                        <input id="trip-photo" name="photo" type="file" accept="image/*" required>
+                    </label>
+                    <div class="trip-photo-preview" id="trip-photo-preview" hidden>
+                        <img id="trip-photo-preview-image" alt="Selected trip photo preview">
+                    </div>
+                    <label class="trip-field">
+                        Place
+                        <input id="trip-place" name="place" type="text" maxlength="200" placeholder="Enter a place or address" autocomplete="street-address" required>
+                    </label>
+                    <div class="trip-map-preview">
+                        <p class="trip-map-label">Map preview</p>
+                        <p id="trip-map-placeholder" class="trip-map-placeholder">Enter a place to preview it on Google Maps.</p>
+                        <iframe id="trip-map-preview" title="Google Maps place preview" loading="lazy" referrerpolicy="no-referrer-when-downgrade" hidden></iframe>
+                    </div>
+                    <button class="trip-submit" type="submit">Save trip memory</button>
+                    <p id="trip-form-status" class="trip-form-status" role="status" aria-live="polite"></p>
+                </form>
+            </section>
+        </details>
+        <section class="trip-memories" aria-labelledby="trip-memories-title">
+            <h2 id="trip-memories-title">Our trips</h2>
+            <p id="trip-empty-state" class="trip-empty-state">Your saved trip memories will appear here.</p>
+            <div id="trip-list" class="trip-list"></div>
+        </section>
+    </main>
+    <script src="carousel.js"></script>
+    <script src="gallery.js"></script>
+    <script src="trip-memories.js"></script>
+    <script src="relationship-counter.js"></script>
+    <script src="music-player.js"></script>
+    <script src="site-navigation.js"></script>
+</body>
+</html>

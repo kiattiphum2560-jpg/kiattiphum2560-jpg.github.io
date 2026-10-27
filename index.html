@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💜My girlfriend💜</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="falling-hearts" aria-hidden="true">
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+        <span>&#x2665;&#xFE0E;</span>
+    </div>
+    <header class="site-header">
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="index.html" aria-current="page">Home</a>
+            <a href="memories.html">Memories</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="message.html">Message</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <main id="home">
+        <h1><span class="bouncing-heart" aria-hidden="true">💜</span>Welcome My Wife<span class="bouncing-heart" aria-hidden="true">💜</span></h1>
+        <p>เว็บนี้ใช้สำหรับแสดงความรักของฉันต่อเธอ ใช้เพื่อเก็บเรื่องราวของเรากัน</p>
+        <p>เก็บไว้ดูเป็๋นความทรงจำทีและความสุกที่ผ่านมาขอให้บี๋ๆมีความสุขนะคะ</p>
+
+        <section class="relationship-counter" data-start-date="2025-10-15" aria-labelledby="relationship-title">
+            <h2 id="relationship-title">ระยะเวลาที่คบกัน</h2>
+            <p>เราคบกันมาแล้ว</p>
+            <div class="relationship-duration" id="relationship-duration" aria-live="polite" aria-atomic="true">
+                <div class="duration-unit"><span data-duration="years">-</span><span>ปี</span></div>
+                <div class="duration-unit"><span data-duration="months">-</span><span>เดือน</span></div>
+                <div class="duration-unit"><span data-duration="days">-</span><span>วัน</span></div>
+            </div>
+        </section>
+
+        <section class="music-player" aria-labelledby="music-player-title">
+            <div class="music-player-heading">
+                <h2 id="music-player-title">เพลงของเรา 💜</h2>
+                <span>เล่นวนซ้ำ</span>
+            </div>
+            <audio id="music-audio" loop preload="metadata">
+                <source src="scr/เพลง/LANDOKMAI%20-%20เพลงรักเพลงแรก%20(Blooming)%20%5BOfficial%20MV%5D(mp3j.mp3.mp3" type="audio/mpeg">
+            </audio>
+            <div class="music-track">
+                <div class="music-cover" id="music-cover" aria-hidden="true">
+                    <span>♫</span>
+                </div>
+                <div class="music-track-info">
+                    <p class="music-track-name" id="music-track-name">เพลงรักเพลงแรก (Blooming)</p>
+                    <span>เล่นจากไฟล์เสียงในโปรเจกต์</span>
+                </div>
+            </div>
+            <div class="music-controls">
+                <button class="music-play-button" id="music-play" type="button" aria-label="เล่นเพลง" disabled>▶</button>
+                <span class="music-time" id="music-current-time">0:00</span>
+                <input class="music-progress" id="music-progress" type="range" min="0" max="1000" value="0" aria-label="ตำแหน่งเพลง" disabled>
+                <span class="music-time" id="music-duration">0:00</span>
+            </div>
+            <p class="music-status" id="music-status" role="status" aria-live="polite">กดปุ่มเล่นเพื่อฟังเพลง</p>
+        </section>
+    </main>
+    <script src="relationship-counter.js"></script>
+    <script src="music-player.js"></script>
+</body>
+</html>

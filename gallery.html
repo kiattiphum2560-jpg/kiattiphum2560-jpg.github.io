@@ -31,19 +31,23 @@
         </nav>
     </header>
     <main>
-        <h1>Our Gallery</h1>
+        <h1>Our Gallery<span class="bouncing-heart" aria-hidden="true">💖</span></h1>
         <p>Favorite photos, all in one place.</p>
-        <section class="pinterest-gallery" aria-label="Photo gallery">
-            <div class="pinterest-card pinterest-card-tall" aria-label="Empty photo space"></div>
-            <div class="pinterest-card pinterest-card-short" aria-label="Empty photo space"></div>
-            <div class="pinterest-card pinterest-card-medium" aria-label="Empty photo space"></div>
-            <div class="pinterest-card pinterest-card-tall" aria-label="Empty photo space"></div>
-            <div class="pinterest-card pinterest-card-short" aria-label="Empty photo space"></div>
-            <div class="pinterest-card pinterest-card-medium" aria-label="Empty photo space"></div>
-            <div class="pinterest-card pinterest-card-short" aria-label="Empty photo space"></div>
-            <div class="pinterest-card pinterest-card-tall" aria-label="Empty photo space"></div>
-            <div class="pinterest-card pinterest-card-medium" aria-label="Empty photo space"></div>
+        <section class="gallery-upload" aria-labelledby="gallery-upload-title">
+            <h2 id="gallery-upload-title">Add your photos</h2>
+            <p>Choose photos from your device. They will be saved in this browser.</p>
+            <label class="gallery-upload-label" for="gallery-photo-input">Add photos</label>
+            <input class="gallery-upload-input" id="gallery-photo-input" type="file" accept="image/*" multiple>
+            <p class="gallery-upload-status" id="gallery-upload-status" role="status" aria-live="polite"></p>
         </section>
+        <p class="gallery-photo-count" id="gallery-photo-count" aria-live="polite">Loading photos...</p>
+        <section class="pinterest-gallery" id="pinterest-gallery" aria-label="Photo gallery"></section>
     </main>
+    <script src="carousel.js"></script>
+    <script src="gallery.js"></script>
+    <script src="trip-memories.js"></script>
+    <script src="relationship-counter.js"></script>
+    <script src="music-player.js"></script>
+    <script src="site-navigation.js"></script>
 </body>
 </html>

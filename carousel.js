@@ -1,20 +1,33 @@
-const carousel = document.querySelector(".photo-carousel");
-const track = carousel?.querySelector(".photo-track");
-const aboutNotes = document.querySelectorAll(".about-note");
+let pageInteractionController;
+let carouselInterval;
 
-aboutNotes.forEach((note) => {
-    note.addEventListener("toggle", () => {
-        if (!note.open) return;
+const initializePageInteractions = () => {
+    pageInteractionController?.abort();
+    window.clearInterval(carouselInterval);
+    pageInteractionController = new AbortController();
+    const { signal } = pageInteractionController;
 
-        aboutNotes.forEach((otherNote) => {
-            if (otherNote !== note) {
-                otherNote.open = false;
-            }
-        });
+    const aboutNotes = document.querySelectorAll(".about-note");
+    aboutNotes.forEach((note) => {
+        note.addEventListener(
+            "toggle",
+            () => {
+                if (!note.open) return;
+
+                aboutNotes.forEach((otherNote) => {
+                    if (otherNote !== note) {
+                        otherNote.open = false;
+                    }
+                });
+            },
+            { signal }
+        );
     });
-});
 
-if (carousel && track) {
+    const carousel = document.querySelector(".photo-carousel");
+    const track = carousel?.querySelector(".photo-track");
+    if (!carousel || !track) return;
+
     const slides = Array.from(track.children);
     const prefersReducedMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)"
@@ -38,22 +51,30 @@ if (carousel && track) {
         track.style.transform = `translateX(${getTranslate(activeIndex)}px)`;
     };
 
-    carousel.addEventListener("pointerdown", (event) => {
-        if (event.button !== 0) return;
+    carousel.addEventListener(
+        "pointerdown",
+        (event) => {
+            if (event.button !== 0) return;
 
-        pointerStart = event.clientX;
-        dragOffset = 0;
-        startTranslate = getTranslate(activeIndex);
-        track.style.transition = "none";
-        carousel.setPointerCapture(event.pointerId);
-    });
+            pointerStart = event.clientX;
+            dragOffset = 0;
+            startTranslate = getTranslate(activeIndex);
+            track.style.transition = "none";
+            carousel.setPointerCapture(event.pointerId);
+        },
+        { signal }
+    );
 
-    carousel.addEventListener("pointermove", (event) => {
-        if (pointerStart === null) return;
+    carousel.addEventListener(
+        "pointermove",
+        (event) => {
+            if (pointerStart === null) return;
 
-        dragOffset = event.clientX - pointerStart;
-        track.style.transform = `translateX(${startTranslate + dragOffset}px)`;
-    });
+            dragOffset = event.clientX - pointerStart;
+            track.style.transform = `translateX(${startTranslate + dragOffset}px)`;
+        },
+        { signal }
+    );
 
     const finishDrag = () => {
         if (pointerStart === null) return;
@@ -69,25 +90,33 @@ if (carousel && track) {
         dragOffset = 0;
     };
 
-    carousel.addEventListener("pointerup", finishDrag);
-    carousel.addEventListener("pointercancel", finishDrag);
-    carousel.addEventListener("lostpointercapture", finishDrag);
+    carousel.addEventListener("pointerup", finishDrag, { signal });
+    carousel.addEventListener("pointercancel", finishDrag, { signal });
+    carousel.addEventListener("lostpointercapture", finishDrag, { signal });
 
-    carousel.addEventListener("keydown", (event) => {
-        if (event.key === "ArrowRight") {
-            showSlide(activeIndex + 1);
-        } else if (event.key === "ArrowLeft") {
-            showSlide(activeIndex - 1);
-        } else {
-            return;
-        }
-        event.preventDefault();
-    });
+    carousel.addEventListener(
+        "keydown",
+        (event) => {
+            if (event.key === "ArrowRight") {
+                showSlide(activeIndex + 1);
+            } else if (event.key === "ArrowLeft") {
+                showSlide(activeIndex - 1);
+            } else {
+                return;
+            }
+            event.preventDefault();
+        },
+        { signal }
+    );
 
-    window.addEventListener("resize", () => showSlide(activeIndex, false));
+    window.addEventListener(
+        "resize",
+        () => showSlide(activeIndex, false),
+        { signal }
+    );
 
     if (!prefersReducedMotion.matches) {
-        window.setInterval(() => {
+        carouselInterval = window.setInterval(() => {
             if (pointerStart === null) {
                 showSlide(activeIndex + 1);
             }
@@ -95,4 +124,7 @@ if (carousel && track) {
     }
 
     showSlide(activeIndex, false);
-}
+};
+
+document.addEventListener("site:pagechange", initializePageInteractions);
+initializePageInteractions();

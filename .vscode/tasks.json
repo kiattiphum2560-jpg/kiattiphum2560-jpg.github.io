@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Start Myweb server",
+            "type": "process",
+            "command": "node",
+            "args": [
+                "${workspaceFolder}\\server.js"
+            ],
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "custom",
+                "pattern": {
+                    "regexp": "^$"
+                },
+                "background": {
+                    "activeOnStart": false,
+                    "beginsPattern": "^Myweb server starting$",
+                    "endsPattern": "^Myweb is running at http://127\\.0\\.0\\.1:8080$"
+                }
+            }
+        }
+    ]
+}

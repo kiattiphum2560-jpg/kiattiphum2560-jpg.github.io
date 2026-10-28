@@ -1,6 +1,11 @@
-const counter = document.querySelector(".relationship-counter");
+let durationInterval;
 
-if (counter) {
+const initializeRelationshipCounter = () => {
+    window.clearInterval(durationInterval);
+
+    const counter = document.querySelector(".relationship-counter");
+    if (!counter) return;
+
     const startDateValue = counter.dataset.startDate;
     const dateParts = startDateValue?.match(/^(\d{4})-(\d{2})-(\d{2})$/);
 
@@ -51,10 +56,14 @@ if (counter) {
     };
 
     updateDuration();
-    window.setInterval(updateDuration, 60_000);
-    document.addEventListener("visibilitychange", () => {
-        if (document.visibilityState === "visible") {
-            updateDuration();
-        }
-    });
-}
+    durationInterval = window.setInterval(updateDuration, 60_000);
+};
+
+document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") {
+        initializeRelationshipCounter();
+    }
+});
+
+document.addEventListener("site:pagechange", initializeRelationshipCounter);
+initializeRelationshipCounter();
